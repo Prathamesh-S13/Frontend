@@ -1,0 +1,137 @@
+/* -------------------- General Reset -------------------- */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+body { background:#f3f6f9; color:#333; }
+
+/* -------------------- Header -------------------- */
+header { display:flex; justify-content:space-between; align-items:center; padding:20px 50px; background:#2b2d42; color:white; box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+header .logo { font-size:1.8rem; font-weight:bold; letter-spacing:1px; }
+header nav a { color:white; margin-left:25px; text-decoration:none; transition:0.3s; border-bottom:2px solid transparent; padding-bottom:2px; }
+header nav a:hover, header nav a.active { border-bottom:2px solid #ef233c; }
+
+/* -------------------- Hero -------------------- */
+.hero { text-align:center; padding:120px 20px; background:linear-gradient(135deg,#8d99ae,#edf2f4); border-bottom:8px solid #ef233c; border-radius:0 0 50px 50px; box-shadow:0 15px 40px rgba(0,0,0,0.15);}
+.hero h1 { font-size:3rem; margin-bottom:15px; color:#2b2d42; }
+.hero p { font-size:1.2rem; margin-bottom:30px; color:#333; }
+.hero .btn { padding:12px 30px; background:#ef233c; color:white; text-decoration:none; border-radius:30px; transition:0.3s; box-shadow:0 8px 15px rgba(0,0,0,0.2);}
+.hero .btn:hover { background:#d90429; transform:scale(1.05); }
+
+/* -------------------- Features -------------------- */
+.features { display:flex; justify-content:center; gap:40px; padding:80px 20px; flex-wrap:wrap; }
+.features .card { background:white; border-radius:20px; padding:40px; width:280px; text-align:center; box-shadow:0 15px 25px rgba(0,0,0,0.15); transition:0.4s; border:2px solid #edf2f4; }
+.features .card:hover { transform:translateY(-15px); box-shadow:0 20px 40px rgba(0,0,0,0.2); }
+.features .card h2 { margin-bottom:15px; color:#ef233c; }
+
+/* -------------------- Sections -------------------- */
+.view-section { padding:80px 20px; text-align:center; }
+.view-section h2 { font-size:2.2rem; margin-bottom:50px; color:#2b2d42; }
+
+/* -------------------- Card Containers -------------------- */
+.materials-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
+
+/* -------------------- Cards -------------------- */
+.materials-container .latest-card {
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    width:280px;
+    box-shadow:0 15px 25px rgba(0,0,0,0.15);
+    border:2px solid #edf2f4;
+    transition:0.4s;
+    text-align:center;
+}
+.materials-container .latest-card:hover {
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+.materials-container .latest-card h3 { color:#ef233c; font-size:1.3rem; margin-bottom:15px; }
+.materials-container .latest-card p { font-size:0.95rem; color:#555; margin-bottom:20px; }
+.materials-container .latest-card a {
+    text-decoration:none;
+    background:#ef233c;
+    color:white;
+    padding:10px 25px;
+    border-radius:30px;
+    transition:0.3s;
+    display:inline-block;
+    font-weight:bold;
+}
+.materials-container .latest-card a:hover {
+    background:#d90429;
+    transform:scale(1.05);
+}
+
+/* -------------------- Testimonials -------------------- */
+.testimonials { padding:80px 20px; background:#edf2f4; text-align:center; }
+.testimonials h2 { margin-bottom:50px; font-size:2.2rem; color:#2b2d42; }
+.testimonial-card { background:white; display:inline-block; margin:15px; padding:30px; width:300px; border-radius:20px; box-shadow:0 15px 25px rgba(0,0,0,0.15); transition:0.3s; border-left:5px solid #ef233c; }
+.testimonial-card p { font-size:1rem; color:#555; margin-bottom:15px; }
+.testimonial-card span { font-weight:bold; color:#2b2d42; }
+.testimonial-card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.2); }
+
+/* -------------------- Upload Form -------------------- */
+.upload-section { max-width:600px; margin:80px auto; background:white; padding:40px; border-radius:20px; box-shadow:0 15px 30px rgba(0,0,0,0.15); border:2px solid #edf2f4; text-align:center; }
+.upload-section h2 { font-size:2.2rem; margin-bottom:15px; color:#ef233c; }
+.upload-section p { margin-bottom:30px; color:#555; }
+.upload-form input, .upload-form textarea { width:100%; padding:15px; margin-bottom:20px; border-radius:12px; border:1px solid #ccc; transition:0.3s; }
+.upload-form input:focus, .upload-form textarea:focus { border-color:#ef233c; outline:none; box-shadow:0 5px 15px rgba(239,35,60,0.2); }
+.upload-form button { background:#ef233c; color:white; border:none; padding:15px 30px; border-radius:30px; cursor:pointer; font-size:1rem; transition:0.3s; box-shadow:0 8px 15px rgba(0,0,0,0.2); }
+.upload-form button:hover { background:#d90429; transform:scale(1.05); }
+.msg { margin-top:20px; font-weight:bold; }
+
+/* -------------------- Footer -------------------- */
+footer { text-align:center; padding:25px; background:#2b2d42; color:white; }
+
+/* -------------------- Buttons -------------------- */
+.btn { text-decoration:none; background:#ef233c; color:white; padding:10px 25px; border-radius:30px; transition:0.3s; display:inline-block; font-weight:bold; }
+.btn:hover { background:#d90429; transform:scale(1.05); }
+
+/* -------------------- Subject Cards -------------------- */
+.subjects-container .subject-card { background:white; border-radius:20px; padding:30px; width:250px; box-shadow:0 15px 25px rgba(0,0,0,0.15); border:2px solid #edf2f4; transition:0.4s; text-align:center; }
+.subjects-container .subject-card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.25); }
+.subjects-container .subject-card h3 { color:#ef233c; margin-bottom:15px; }
+.subjects-container .subject-card .btn { display:inline-block; text-decoration:none; }
+/* -------------------- About Page Cards -------------------- */
+.about-cards { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:40px; }
+
+.about-cards .latest-card {
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    width:280px;
+    box-shadow:0 15px 25px rgba(0,0,0,0.15);
+    border:2px solid #edf2f4;
+    transition:0.4s;
+    text-align:center;
+    opacity:0;
+    transform:translateY(20px);
+    animation: fadeUp 0.8s forwards;
+}
+
+.about-cards .latest-card:hover {
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+.about-cards .latest-card h3 { color:#ef233c; font-size:1.3rem; margin-bottom:15px; }
+.about-cards .latest-card p { font-size:0.95rem; color:#555; }
+
+/* -------------------- Fade-in Animations -------------------- */
+.fade, .fade-up { opacity:0; transform:translateY(20px); transition:all 0.8s ease-out; }
+.fade.appear, .fade-up.appear { opacity:1; transform:translateY(0); }
+
+@keyframes fadeUp {
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* -------------------- Floating Icons -------------------- */
+.floating-icon {
+  position:absolute;
+  font-size:2rem;
+  opacity:0.15;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-20px); }
+}

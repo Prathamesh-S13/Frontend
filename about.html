@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - EduPortal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+  <div class="logo">EduPortal</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="upload.html">Upload</a>
+    <a href="subjects.html">Subjects</a>
+    <a href="view.html">Materials</a>
+    <a href="about.html" class="active">About</a>
+  </nav>
+</header>
+
+<section class="view-section about-section">
+  <h2 class="fade">About EduPortal</h2>
+  <p class="fade" style="margin-bottom:30px;">EduPortal is a modern educational platform designed to make learning and sharing knowledge seamless for students and teachers.</p>
+  
+  <div class="materials-container about-cards">
+    <div class="latest-card fade-up">
+      <h3>Upload Materials</h3>
+      <p>Students and teachers can upload study materials, notes, assignments, and more, making resources accessible to everyone.</p>
+    </div>
+    <div class="latest-card fade-up" style="animation-delay:0.2s;">
+      <h3>Explore Subjects</h3>
+      <p>Browse through different subjects and categories to find materials tailored to your learning needs.</p>
+    </div>
+    <div class="latest-card fade-up" style="animation-delay:0.4s;">
+      <h3>Learn Anytime</h3>
+      <p>Access uploaded materials anytime, anywhere. Study at your own pace with resources available online.</p>
+    </div>
+    <div class="latest-card fade-up" style="animation-delay:0.6s;">
+      <h3>Share Knowledge</h3>
+      <p>Contribute to the community by sharing your materials and help others learn better. Knowledge grows when shared!</p>
+    </div>
+  </div>
+
+  <p class="fade" style="margin-top:30px; font-size:1.1rem; color:#555;">
+    EduPortal is more than just a platform—it’s a hub for collaboration, growth, and learning, bringing students and teachers together in one interactive and elegant space.
+  </p>
+
+  <!-- Floating icons for premium feel -->
+  <div class="floating-icon" style="top:20%; left:10%;">📚</div>
+  <div class="floating-icon" style="top:50%; left:85%;">📝</div>
+  <div class="floating-icon" style="top:70%; left:25%;">🎓</div>
+  <div class="floating-icon" style="top:30%; left:70%;">💡</div>
+</section>
+
+<footer>
+  <p>&copy; 2025 EduPortal. All rights reserved.</p>
+</footer>
+
+<script>
+const faders = document.querySelectorAll('.fade, .fade-up');
+
+const appearOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('appear');
+    appearOnScroll.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+</script>
+<script>
+// Animate elements on scroll
+const faders = document.querySelectorAll('.fade, .fade-up, .fade-left, .fade-right');
+
+const appearOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('appear');
+    appearOnScroll.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">EduPortal</div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="upload.html">Upload</a>
+    <a href="subjects.html">Subjects</a>
+    <a href="view.html">Materials</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Learn. Share. Grow.</h1>
+  <p>Access thousands of educational resources uploaded by students and teachers worldwide.</p>
+  <a href="upload.html" class="btn">Upload Material</a>
+</section>
+
+<section class="features">
+  <div class="card"><h2>Upload</h2><p>Share your knowledge and educational materials easily.</p></div>
+  <div class="card"><h2>Explore</h2><p>Browse through subjects and categories for easy learning.</p></div>
+  <div class="card"><h2>Read</h2><p>Access materials anytime, anywhere, from any device.</p></div>
+</section>
+
+<section class="latest view-section">
+  <h2>Latest Uploads</h2>
+  <div class="materials-container" id="latestMaterials"></div>
+</section>
+
+<section class="testimonials">
+  <h2>What Students Say</h2>
+  <div class="testimonial-card">
+    <p>"EduPortal has revolutionized the way I study and share materials!"</p>
+    <span>- Priya, Student</span>
+  </div>
+  <div class="testimonial-card">
+    <p>"The platform is elegant and user-friendly. Uploading resources is seamless."</p>
+    <span>- Arjun, Teacher</span>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 EduPortal. All rights reserved.</p>
+</footer>
+
+<script>
+async function fetchLatest() {
+  const container = document.getElementById('latestMaterials');
+  try {
+    const res = await fetch('http://localhost:5000/api/materials');
+    const materials = await res.json();
+    materials.slice(0,6).forEach(mat => {
+      const div = document.createElement('div');
+      div.className = 'latest-card';
+      div.innerHTML = `<h3>${mat.title}</h3><p>${mat.description || 'No description'}</p><a href="http://localhost:5000${mat.fileUrl}" target="_blank">Read</a>`;
+      container.appendChild(div);
+    });
+  } catch(err) { container.innerHTML = '<p>Failed to load latest materials.</p>'; }
+}
+fetchLatest();
+</script>
+</body>
+</html>

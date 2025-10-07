@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Material - EduPortal</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Elegant drag-and-drop upload box */
+.upload-form {
+  border: 2px dashed #ef233c;
+  padding: 30px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+  position: relative;
+  text-align: center;
+  transition: 0.3s;
+}
+.upload-form.dragover { background: #ffe5e5; border-color: #d90429; }
+.upload-form input[type="file"] { display: none; }
+.upload-label {
+  display: block;
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  background: #ef233c;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+.upload-label:hover { background: #d90429; transform: scale(1.05); }
+.msg { font-weight: bold; margin-top: 20px; font-size: 1.1rem; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">EduPortal</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="upload.html" class="active">Upload</a>
+    <a href="subjects.html">Subjects</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<section class="upload-section">
+  <h2>Upload Material</h2>
+  <p>Share your study material with everyone!</p>
+  <form class="upload-form" id="uploadForm">
+    <input type="text" id="title" placeholder="Material Title" required>
+    <input type="text" id="subject" placeholder="Subject" required>
+    <textarea id="description" placeholder="Description"></textarea>
+    <label class="upload-label" for="file">Choose PDF / DOC / DOCX</label>
+    <input type="file" id="file" name="file" accept=".pdf,.doc,.docx" required>
+    <button type="submit">Upload Material</button>
+  </form>
+  <p class="msg" id="msg"></p>
+</section>
+
+<footer>
+  <p>&copy; 2025 EduPortal. All rights reserved.</p>
+</footer>
+
+<script>
+const uploadForm = document.getElementById('uploadForm');
+const msg = document.getElementById('msg');
+
+uploadForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const title = document.getElementById('title').value;
+  const subject = document.getElementById('subject').value;
+  const description = document.getElementById('description').value;
+  const file = document.getElementById('file').files[0];
+
+  if (!file) {
+    msg.textContent = '❌ Please select a file!';
+    msg.style.color = 'red';
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('subject', subject);
+  formData.append('description', description);
+  formData.append('file', file);
+
+  try {
+    const res = await fetch('http://localhost:5000/api/materials/upload', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+
+    if (data._id) {
+      msg.textContent = `✅ Material uploaded successfully! File: ${data.fileUrl}`;
+      msg.style.color = 'green';
+      uploadForm.reset();
+    } else {
+      msg.textContent = '❌ Upload failed!';
+      msg.style.color = 'red';
+    }
+  } catch (err) {
+    msg.textContent = '❌ Upload failed!';
+    msg.style.color = 'red';
+    console.error(err);
+  }
+});
+</script>
+
+</body>
+</html>

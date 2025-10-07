@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materials - EduPortal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">EduPortal</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="upload.html">Upload</a>
+    <a href="subjects.html">Subjects</a>
+     <a href="view.html">Materials</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<!-- Hero / Title Section -->
+<section class="hero">
+  <h1 id="subjectTitle">Materials</h1>
+  <p>Explore all materials available for your selected subject</p>
+</section>
+
+<!-- Materials Section -->
+<section class="view-section materials-section">
+  <div class="materials-container" id="materialsContainer"></div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 EduPortal. All rights reserved.</p>
+</footer>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const subject = urlParams.get('subject') || "All Subjects";
+document.getElementById('subjectTitle').innerText = `Materials for: ${subject}`;
+
+async function fetchMaterials() {
+  const container = document.getElementById('materialsContainer');
+  container.innerHTML = ''; // clear previous
+  try {
+    const res = await fetch('http://localhost:5000/api/materials');
+    const data = await res.json();
+
+    // Filter materials by subject
+    const filtered = subject === "All Subjects" ? data : data.filter(mat => mat.subject === subject);
+
+    if(filtered.length === 0){
+      container.innerHTML = '<p style="font-size:1.2rem; color:#555;">No materials found for this subject.</p>';
+      return;
+    }
+
+    filtered.forEach((mat, index) => {
+      const card = document.createElement('div');
+      card.className = 'latest-card fade-up';
+      card.style.animationDelay = `${index * 0.1}s`; // staggered fade animation
+      card.innerHTML = `
+        <h3>${mat.title || mat.subject}</h3>
+        <p>${mat.description || 'No description available.'}</p>
+        <a href="${mat.fileUrl}" target="_blank" class="btn">Open File</a>
+      `;
+      container.appendChild(card);
+
+      // Trigger fade-up animation
+      setTimeout(() => card.classList.add('appear'), 50);
+    });
+
+  } catch(err){
+    container.innerHTML = '<p style="font-size:1.2rem; color:#555;">Failed to load materials.</p>';
+    console.error(err);
+  }
+}
+
+fetchMaterials();
+</script>
+
+</body>
+</html>
