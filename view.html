@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- Header -->
+
 <header>
   <div class="logo">EduPortal</div>
   <nav>
@@ -20,18 +20,18 @@
   </nav>
 </header>
 
-<!-- Hero / Title Section -->
+
 <section class="hero">
   <h1 id="subjectTitle">Materials</h1>
   <p>Explore all materials available for your selected subject</p>
 </section>
 
-<!-- Materials Section -->
+
 <section class="view-section materials-section">
   <div class="materials-container" id="materialsContainer"></div>
 </section>
 
-<!-- Footer -->
+
 <footer>
   <p>&copy; 2025 EduPortal. All rights reserved.</p>
 </footer>
@@ -48,7 +48,7 @@ async function fetchMaterials() {
     const res = await fetch('http://localhost:5000/api/materials');
     const data = await res.json();
 
-    // Filter materials by subject
+    
     const filtered = subject === "All Subjects" ? data : data.filter(mat => mat.subject === subject);
 
     if(filtered.length === 0){
@@ -67,7 +67,7 @@ async function fetchMaterials() {
       `;
       container.appendChild(card);
 
-      // Trigger fade-up animation
+     
       setTimeout(() => card.classList.add('appear'), 50);
     });
 
@@ -82,3 +82,4 @@ fetchMaterials();
 
 </body>
 </html>
+
