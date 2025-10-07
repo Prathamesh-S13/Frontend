@@ -135,3 +135,94 @@ footer { text-align:center; padding:25px; background:#2b2d42; color:white; }
   0%,100% { transform:translateY(0); }
   50% { transform:translateY(-20px); }
 }
+/* -------------------- Responsive Design -------------------- */
+
+/* Large tablets / small desktops */
+@media (max-width: 1024px) {
+    header { flex-direction: column; align-items: flex-start; padding: 15px 30px; }
+    header nav { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 15px; }
+    .hero { padding: 100px 15px; border-radius:0 0 40px 40px; }
+    .features { flex-direction: row; justify-content: space-around; gap:25px; }
+    .features .card, .materials-container .latest-card, .subjects-container .subject-card, .about-cards .latest-card, .testimonial-card {
+        width: 45%;
+    }
+}
+
+/* Tablets / portrait */
+@media (max-width: 768px) {
+    header { padding: 12px 20px; }
+    header .logo { font-size:1.5rem; }
+    header nav a { margin-left:10px; font-size:0.95rem; }
+    .hero { padding:80px 10px; }
+    .hero h1 { font-size:2.2rem; }
+    .hero p { font-size:1rem; }
+    .features { flex-direction: column; gap:20px; align-items:center; }
+    .features .card, .materials-container .latest-card, .subjects-container .subject-card, .about-cards .latest-card, .testimonial-card {
+        width: 90%;
+    }
+    .materials-container { gap:20px; justify-content:center; }
+    .view-section { padding:60px 8px; }
+    .upload-section { width:95%; margin:50px auto; padding:30px; }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    header { padding:10px 15px; }
+    header .logo { font-size:1.3rem; }
+    header nav a { font-size:0.85rem; margin:5px 5px; }
+    .hero { padding:60px 8px; }
+    .hero h1 { font-size:1.8rem; }
+    .hero p { font-size:0.95rem; }
+    .hero .btn { padding:10px 20px; font-size:0.95rem; }
+    .features .card, .materials-container .latest-card, .subjects-container .subject-card, .about-cards .latest-card, .testimonial-card {
+        width:100%;
+        padding:25px;
+    }
+    .view-section h2 { font-size:1.6rem; margin-bottom:30px; }
+    .view-section p { font-size:0.95rem; }
+    .upload-section { padding:25px; }
+    footer { font-size:0.85rem; padding:20px 10px; }
+    .floating-icon { font-size:1.5rem; opacity:0.1; }
+}
+
+/* Optional: extra small mobiles */
+@media (max-width: 360px) {
+    .hero h1 { font-size:1.5rem; }
+    .hero p { font-size:0.9rem; }
+    .features .card, .materials-container .latest-card, .subjects-container .subject-card, .about-cards .latest-card, .testimonial-card {
+        padding:20px;
+    }
+    .upload-section { padding:20px; }
+}
+/* -------------------- Smooth Hover & Elevation Animations -------------------- */
+/* Applies to cards on all pages */
+.features .card,
+.materials-container .latest-card,
+.subjects-container .subject-card,
+.about-cards .latest-card,
+.testimonial-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Desktop / tablet hover */
+.features .card:hover,
+.materials-container .latest-card:hover,
+.subjects-container .subject-card:hover,
+.about-cards .latest-card:hover,
+.testimonial-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+
+/* Mobile touch-friendly subtle hover */
+@media (max-width: 768px) {
+    .features .card:hover,
+    .materials-container .latest-card:hover,
+    .subjects-container .subject-card:hover,
+    .about-cards .latest-card:hover,
+    .testimonial-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+}
+
