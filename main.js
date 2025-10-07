@@ -1,10 +1,10 @@
-// Card hover effect
+
 document.querySelectorAll('.card, .testimonial-card, .latest-card').forEach(card => {
     card.addEventListener('mouseenter', () => { card.style.transform='scale(1.05)'; });
     card.addEventListener('mouseleave', () => { card.style.transform='scale(1)'; });
 });
 
-// Fetch latest uploads dynamically
+
 async function fetchLatest() {
     const container = document.getElementById('latestMaterials');
     try {
@@ -22,3 +22,4 @@ async function fetchLatest() {
 }
 
 fetchLatest();
+
